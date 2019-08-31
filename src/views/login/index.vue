@@ -1,7 +1,7 @@
 <template>
   <div class="login-container pull-height" @keyup.enter.native="handleLogin">
     <div class="login-info text-white animated fadeInLeft">
-      <div class="logo" style="margin-top:-426px">
+      <div class="logo" style="margin-top:-350px">
           <img src="../../assets/images/home/logo.png" width="160px" height="160px" alt="logo" style="vertical-align: middle;" />
       </div>
       <h2 class="login-info-title">{{website.info.title}}</h2>
@@ -10,14 +10,15 @@
       <div class="login-main">
         <h4 class="login-title">登录{{website.title}}
         </h4>
-        <el-tabs v-model="activeName">
+        <userLogin></userLogin>
+        <!-- <el-tabs v-model="activeName">
           <el-tab-pane label="用户密码" name="user">
             <userLogin></userLogin>
           </el-tab-pane>
           <el-tab-pane label="短信验证码" name="code">
             <codeLogin></codeLogin>
           </el-tab-pane>
-        </el-tabs>
+        </el-tabs> -->
       </div>
     </div>
 
@@ -102,7 +103,7 @@ export default {
 .login-title {
   margin: 0 0 20px;
   text-align: center;
-  color: #409eff;
+  color: #21BAA9;
   letter-spacing: 3px;
 }
 .login-submit {

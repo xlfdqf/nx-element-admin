@@ -1,23 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-// const _import = require('./_import_' + process.env.NODE_ENV)
-// in development-env not use lazy-loading, because lazy-loading too many pages will cause webpack hot update too slow. so only in production use lazy-loading;
-// detail: https://panjiachen.github.io/vue-element-admin-site/#/lazy-loading
-
 Vue.use(Router)
 
-/* Layout */
 import Layout from '../views/layout/Layout'
 
 export const constantRouterMap = [
-  // {
-  //   path: '/',
-  //   component: Layout,
-  //   redirect: '/login',
-  //   name: 'login',
-  //   hidden: true
-  // },
   {
     path: '',
     component: Layout,
@@ -26,7 +14,6 @@ export const constantRouterMap = [
   { path: '/login', component: () => import('@/views/login'), name: '登录NxAdmin', hidden: true },
   { path: '/404', component: () => import('@/views/errorPage/404'), hidden: true },
   { path: '/401', component: () => import('@/views/errorPage/401'), hidden: true },
-
   // 报表
   {
     path: '/dashboard',
@@ -41,7 +28,6 @@ export const constantRouterMap = [
       }
     ]
   },
-
   // 图表
   {
     path: '/charts',
@@ -55,24 +41,6 @@ export const constantRouterMap = [
         name: 'DiscountFigure',
         component: () => import('@/views/charts/DiscountFigure'),
         meta: { title: 'DiscountFigure', icon: 'discounting', roles: ['admin'] }
-      },
-      {
-        path: 'columnar',
-        name: 'columnar',
-        component: () => import('@/views/charts/columnar'),
-        meta: { title: 'columnar', icon: 'columnar', roles: ['admin'] }
-      },
-      {
-        path: 'pieChart',
-        name: 'pieChart',
-        component: () => import('@/views/charts/pieChart'),
-        meta: { title: 'pieChart', icon: 'pieChart', roles: ['admin'] }
-      },
-      {
-        path: 'funnelCharts',
-        name: 'funnelCharts',
-        component: () => import('@/views/charts/funnelCharts'),
-        meta: { title: 'funnelCharts', icon: 'funnelCharts', roles: ['admin'] }
       },
     ]
   },
@@ -119,32 +87,6 @@ export const constantRouterMap = [
         component: () => import('@/views/form/Upload'),
         meta: { title: 'Upload' }
       }
-    ]
-  },
-  // 表格
-  {
-    path: '/table',
-    component: Layout,
-    redirect: '/table/complex-table',
-    name: 'table',
-    meta: {
-      title: 'Table',
-      icon: 'table'
-    },
-    children: [
-      {
-        path: 'complex-table',
-        name: 'complex-table',
-        component: () => import('@/views/table/complex-table'),
-        meta: { title: 'complexTable' }
-      },
-      {
-        path: 'TreeTable',
-        name: 'TreeTable',
-        component: () => import('@/views/table/tree-table/index'),
-        meta: { title: 'treeTable' }
-      }
-
     ]
   },
   //国际化

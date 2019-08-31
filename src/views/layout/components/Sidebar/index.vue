@@ -8,7 +8,7 @@
       :collapse="isCollapse"
       background-color="#304156"
       text-color="white"
-      active-text-color="#42b983"
+      active-text-color="#21BAA9"
     >
       <sidebar-item :routes="permission_routers"></sidebar-item>
     </el-menu>

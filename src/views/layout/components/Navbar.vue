@@ -8,12 +8,6 @@
         <nx-full-screen class="screenfull right-menu-item"></nx-full-screen>
       </el-tooltip>
 
-      <nx-lang-select class="international right-menu-item"></nx-lang-select>
-
-      <el-tooltip effect="dark" content="主题" placement="bottom">
-        <nx-skin class="theme-switch right-menu-item"></nx-skin>
-      </el-tooltip>
-
       <el-dropdown class="avatar-container right-menu-item" trigger="click">
         <div class="avatar-wrapper">
           <img class="user-avatar" src="https://mgbq.github.io/nx-admin-site/home.png">
@@ -35,16 +29,12 @@ import { mapGetters } from "vuex";
 import nxBreadcrumb from "@/components/nx-breadcrumb";
 import nxHamburger from "@/components/nx-hamburger";
 import nxFullScreen from "@/components/nx-full-screen/index";
-import nxLangSelect from "@/components/nx-lang-select/index";
-import nxSkin from "@/components/nx-skin/index";
 export default {
   name: "navBar",
   components: {
     nxBreadcrumb,
     nxHamburger,
     nxFullScreen,
-    nxLangSelect,
-    nxSkin
   },
   computed: {
     ...mapGetters(["sidebar", "name", "avatar"])

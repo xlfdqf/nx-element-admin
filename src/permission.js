@@ -35,7 +35,6 @@ router.beforeEach((to, from, next) => {
     } else {
       if (store.getters.roles.length === 0) {
         store.dispatch('GetInfo').then(res => { // 拉取用户信息
-          console.log("获取用户信息：", res)
           const roles = res.roles // note: roles must be a array! such as: ['editor','develop']
           store.dispatch('GenerateRoutes', { roles }).then(() => { // 根据roles权限生成可访问的路由表
             router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
@@ -74,7 +73,7 @@ router.beforeEach((to, from, next) => {
 router.afterEach(() => {
   NProgress.done() // 结束Progress
   setTimeout(() => {
-    const browserHeaderTitle = store.getters.browserHeaderTitle
+    const browserHeaderTitle = '图书管理系统'
     setTitle(browserHeaderTitle)
   }, 0)
 })

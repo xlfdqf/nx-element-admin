@@ -12,8 +12,8 @@
     </transition>
     <transition-group name="fade">
       <template v-if="!isCollapse">
+        <img :src="logoimg" width="30" height="30" style="vertical-align: middle;margin-right:10px" key="0"/>
         <span class="logo_title is-bold" key="1">{{website.title}} </span>
-        <span class="logo_subtitle" key="2">{{website.author}}</span>
       </template>
     </transition-group>
   </div>
@@ -70,7 +70,7 @@ export default {
 }
 .logo_title {
   padding: 0 5px 0 0;
-  color: #42b983;
+  color: #21BAA9;
   font-size: 20px;
   &.is-bold {
     font-weight: 700;
