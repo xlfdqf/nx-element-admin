@@ -10,7 +10,6 @@ export function login(username, password) {
     }
   })
 }
-
 // 获取用户信息（权限roles）
 export function getInfo(token) {
   return request({
