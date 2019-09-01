@@ -1,7 +1,5 @@
-import request from '@/utils/request'
-import { get, post } from '@/utils/request'
 
-const api = process.env.NODE_ENV == "development" ? 'api' : '';
+import request from '@/utils/request'
 
 export function login(username, password) {
   return request({
@@ -13,7 +11,7 @@ export function login(username, password) {
     }
   })
 }
-// 获取用户信息（权限roles）
+
 export function getInfo(token) {
   return request({
     url: '/user/info',
@@ -21,6 +19,7 @@ export function getInfo(token) {
     params: { token }
   })
 }
+
 export function logout() {
   return request({
     url: '/user/logout',
