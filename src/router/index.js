@@ -58,7 +58,7 @@ export const constantRouterMap = [
         path: 'treeMen',
         name: 'treeMen-demo',
         component: () => import('@/views/tree/treeMen'),
-        meta: { title: 'treeMen', icon: 'TreeMean' }
+        meta: { title: 'treeMen', icon: 'TreeMean' , roles: ['admin']}
       }
     ]
   },
