@@ -15,8 +15,11 @@
           <i class="el-icon-caret-bottom"></i>
         </div>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item divided>
-            <span @click="logout" style="display:block;">退出</span>
+          <el-dropdown-item >
+            <span>修改密码</span>
+          </el-dropdown-item>
+           <el-dropdown-item divided>
+            <span @click="logout" style="display:block;">退出登录</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>

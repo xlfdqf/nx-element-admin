@@ -11,7 +11,7 @@
         <i slot="prefix" class="icon-mima"></i>
       </el-input>
     </el-form-item>
-    <el-checkbox v-model="checked">记住账号</el-checkbox>
+    <el-checkbox v-model="checked" @change="remenber">记住账号</el-checkbox>
     <el-form-item>
       <el-button type="primary" size="small" @click.native.prevent="handleLogin" class="login-submit">登录</el-button>
     </el-form-item>
@@ -19,17 +19,9 @@
 </template>
 
 <script>
-import { isvalidUsername } from "@/utils/validate";
 export default {
   name: "userlogin",
   data() {
-    const validateUsername = (rule, value, callback) => {
-      if (!isvalidUsername(value)) {
-        callback(new Error("请输入正确的用户名"));
-      } else {
-        callback();
-      }
-    };
     const validateCode = (rule, value, callback) => {
       if (this.code.value !== value) {
         this.loginForm.code = "";
@@ -41,10 +33,12 @@ export default {
     };
     return {
       loginForm: {
-        username: "admin",
-        password: "123456"
+        username: localStorage.getItem("username"),
+        password: localStorage.getItem("password"),
+        // username:'',
+        // password:''
       },
-      checked: false,
+      checked: JSON.parse(localStorage.getItem("checked")),
       code: {
         src: "",
         value: "",
@@ -53,7 +47,7 @@ export default {
       },
       loginRules: {
         username: [
-          { required: true, trigger: "blur", validator: validateUsername }
+          { required: true, trigger: "blur", message: "请输入用户名"}
         ],
         password: [
           { required: true, message: "请输入密码", trigger: "blur" },
@@ -78,11 +72,25 @@ export default {
         ? (this.passwordType = "password")
         : (this.passwordType = "");
     },
+    remenber(){
+      let username = this.loginForm.username;
+      let password = this.loginForm.password;
+      if (this.checked) {
+        localStorage.setItem("username", username);
+        localStorage.setItem("password", password);
+        localStorage.setItem("checked", this.checked);
+      } else {
+        localStorage.setItem("username", "");
+        localStorage.setItem("password", "");
+        localStorage.setItem("checked", false);
+      }
+    },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.$store.dispatch("Login", this.loginForm).then(res => {
             this.$router.push({ path: "/dashboard/dashboard" });
+            this.remenber();
           });
         }
       });
